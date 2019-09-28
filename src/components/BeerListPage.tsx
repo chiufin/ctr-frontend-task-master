@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+
+const BeerImage = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+`
 
 const BeerListPage: React.FC = () => {
   const [beers, setBeers] = useState([])
@@ -15,14 +22,7 @@ const BeerListPage: React.FC = () => {
         <div style={{ border: '1px solid #000' }} key={`beer-${beer['id']}`}>
           <p>Name: {beer['name']}</p>
           <p>Tagline: {beer['tagline']}</p>
-          {/* <img src={beer['image_url']} width='100' height='100'/> */}
-          <div
-            style={{
-              background: `url(${beer['image_url']}) no-repeat`,
-              width: '100px',
-              height: '100px',
-            }}
-          ></div>
+          <BeerImage src={beer['image_url']} />
         </div>
       ))}
     </>
