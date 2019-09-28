@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <Router>
         <div>
           <Route exact path="/" component={BeerListPage} />
-          <Route path="/id" component={BeerDetailPage} />
+          <Route path="/:id" component={BeerDetailPage} />
         </div>
       </Router>
     </>
