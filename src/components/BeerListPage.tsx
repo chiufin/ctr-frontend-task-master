@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const BeerImage = styled.img`
@@ -19,11 +20,13 @@ const BeerListPage: React.FC = () => {
   return (
     <>
       {beers.map((beer) => (
-        <div style={{ border: '1px solid #000' }} key={`beer-${beer['id']}`}>
-          <p>Name: {beer['name']}</p>
-          <p>Tagline: {beer['tagline']}</p>
-          <BeerImage src={beer['image_url']} />
-        </div>
+        <Link to={`/${beer['id']}`}>
+          <div style={{ border: '1px solid #000' }} key={`beer-${beer['id']}`}>
+            <p>Name: {beer['name']}</p>
+            <p>Tagline: {beer['tagline']}</p>
+            <BeerImage src={beer['image_url']} />
+          </div>
+        </Link>
       ))}
     </>
   )
