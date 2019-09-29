@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-
-const BeerImage = styled.img`
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-`
+import BeerImage from './BeerImage'
 
 const BeerListPage: React.FC = () => {
   const [beers, setBeers] = useState([])
@@ -16,18 +10,22 @@ const BeerListPage: React.FC = () => {
       .then((json) => {
         setBeers(json)
       })
-  })
+  }, [])
   return (
     <>
-      {beers.map((beer) => (
-        <Link to={`/${beer['id']}`}>
-          <div style={{ border: '1px solid #000' }} key={`beer-${beer['id']}`}>
-            <p>Name: {beer['name']}</p>
-            <p>Tagline: {beer['tagline']}</p>
-            <BeerImage src={beer['image_url']} />
-          </div>
-        </Link>
-      ))}
+      {beers.map((beer) => {
+        const { id, name, abv, tagline, image_url } = beer
+        return (
+          <Link to={`/${id}`} key={`beer-${id}`}>
+            <div style={{ border: '1px solid #000' }}>
+              <p>{name}</p>
+              <p>{abv}</p>
+              <p>Tagline: {tagline}</p>
+              <BeerImage src={image_url} />
+            </div>
+          </Link>
+        )
+      })}
     </>
   )
 }
