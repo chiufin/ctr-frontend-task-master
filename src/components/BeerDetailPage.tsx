@@ -3,17 +3,19 @@ import { useParams } from 'react-router-dom'
 import BeerImage from './BeerImage'
 import { getBeerDetail } from 'apis'
 
+type BeerType = {
+  name?: string
+  tagline?: string
+  abv?: string
+  image_url?: string
+  first_brewed?: string
+  description?: string
+  food_pairing?: string[]
+}
+
 const BeerDetailPage: React.FC = () => {
-  let { id } = useParams()
-  const [beer, setBeer] = useState({
-    name: '',
-    tagline: '',
-    abv: '',
-    image_url: '',
-    first_brewed: '',
-    description: '',
-    food_pairing: [],
-  })
+  let { id }: { id: string } = useParams()
+  const [beer, setBeer] = useState<BeerType>({})
 
   useEffect(() => {
     let isSubscribed = true
@@ -45,9 +47,8 @@ const BeerDetailPage: React.FC = () => {
       <p>{abv}</p>
       <p>{first_brewed}</p>
       <BeerImage src={image_url} />
-      {food_pairing.map((food, i) => (
-        <p key={`food-${i}`}>{food}</p>
-      ))}
+      {food_pairing &&
+        food_pairing.map((food, i) => <p key={`food-${i}`}>{food}</p>)}
     </>
   )
 }

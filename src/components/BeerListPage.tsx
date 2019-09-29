@@ -3,8 +3,18 @@ import { Link } from 'react-router-dom'
 import BeerImage from './BeerImage'
 import { getBeerList } from '../apis'
 
+type BeerType = {
+  id: string
+  name: string
+  abv: string
+  tagline: string
+  image_url: string
+}
+
+type BeersType = Array<BeerType>
+
 const BeerListPage: React.FC = () => {
-  const [beers, setBeers] = useState([])
+  const [beers, setBeers] = useState<BeersType>([])
   useEffect(() => {
     getBeerList().then((json) => setBeers(json))
   }, [])

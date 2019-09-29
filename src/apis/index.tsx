@@ -1,4 +1,4 @@
-const getData = async (path?: String) => {
+const getData = async (path?: string) => {
   const url = `https://api.punkapi.com/v2/${path}`
   const res = await fetch(url)
   return res.json()
