@@ -15,11 +15,18 @@ const BeerDetailPage: React.FC = () => {
   })
 
   useEffect(() => {
+    let isSubscribed = true
     fetch(`https://api.punkapi.com/v2/beers/${id}`)
       .then((data) => data.json())
       .then((json) => {
-        setBeer(json[0])
+        if (isSubscribed) {
+          setBeer(json[0])
+        }
       })
+
+    return () => {
+      isSubscribed = false
+    }
   }, [id])
 
   let {
