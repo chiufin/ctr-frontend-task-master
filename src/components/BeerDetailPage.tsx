@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import BeerImage from './BeerImage'
+import { getBeerDetail } from 'apis'
 
 const BeerDetailPage: React.FC = () => {
   let { id } = useParams()
@@ -16,13 +17,11 @@ const BeerDetailPage: React.FC = () => {
 
   useEffect(() => {
     let isSubscribed = true
-    fetch(`https://api.punkapi.com/v2/beers/${id}`)
-      .then((data) => data.json())
-      .then((json) => {
-        if (isSubscribed) {
-          setBeer(json[0])
-        }
-      })
+    getBeerDetail(id).then((json) => {
+      if (isSubscribed) {
+        setBeer(json[0])
+      }
+    })
 
     return () => {
       isSubscribed = false

@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import BeerImage from './BeerImage'
+import { getBeerList } from '../apis'
 
 const BeerListPage: React.FC = () => {
   const [beers, setBeers] = useState([])
   useEffect(() => {
-    fetch('https://api.punkapi.com/v2/beers')
-      .then((data) => data.json())
-      .then((json) => {
-        setBeers(json)
-      })
+    getBeerList().then((json) => setBeers(json))
   }, [])
   return (
     <>
