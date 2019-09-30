@@ -83,7 +83,7 @@ const BeerContainer = styled.div`
 const BeerTitle = styled.h1`
   color: #fff;
   font-size: 22px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 `
 
 const BeerLabel = styled.p`

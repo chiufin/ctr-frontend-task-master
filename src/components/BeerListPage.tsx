@@ -59,8 +59,8 @@ const BeerListContainer = styled.div`
 `
 
 const BeerItem = styled.div`
-  width: 380px;
-  height: 250px;
+  width: 200px;
+  height: 255px;
   border: 5px solid #333;
   border-radius: 15px;
   align-content: flex-start;
@@ -75,12 +75,16 @@ const BeerTitle = styled.h1`
   font-size: 18px;
   text-decoration: underline #222;
   margin-bottom: 5px;
+  width: 150px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 const BeerLabel = styled.p`
   color: #ddd;
   text-decoration: underline #222;
-  width: 340px;
+  width: 150px;
   font-size: 12px;
   line-height: 15px;
   white-space: nowrap;
