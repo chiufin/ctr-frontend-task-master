@@ -40,23 +40,54 @@ const BeerDetailPage: React.FC = () => {
     food_pairing,
   } = beer
   return (
-    <>
-      <p>{name}</p>
-      <p>{tagline}</p>
-      <p>{description}</p>
-      <p>{abv}</p>
-      <p>{first_brewed}</p>
-      <BeerImage src={image_url} />
-      {food_pairing &&
-        food_pairing.map((food, i) => <p key={`food-${i}`}>{food}</p>)}
-    </>
+    <BeerLayout>
+      <BeerContainer>
+        <BeerImage src={image_url} />
+        <BeerLabel>{name}</BeerLabel>
+        <BeerLabel>{tagline}</BeerLabel>
+        <BeerLabel>{description}</BeerLabel>
+        <BeerLabel>{abv}</BeerLabel>
+        <BeerLabel>{first_brewed}</BeerLabel>
+        {food_pairing &&
+          food_pairing.map((food, i) => (
+            <BeerLabel key={`food-${i}`}>{food}</BeerLabel>
+          ))}
+      </BeerContainer>
+    </BeerLayout>
   )
 }
 
+const BeerLayout = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: 100vh;
+  background: #222;
+`
+
+const BeerContainer = styled.div`
+  max-width: 600px;
+  min-width: 400px;
+  border: 5px solid #333;
+  border-radius: 15px;
+  padding: 15px;
+`
+
+const BeerLabel = styled.p`
+  color: #fff;
+  line-height: 150%;
+`
+
 const BeerImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 10px;
   object-fit: contain;
+  background: #fff;
 `
 
 export default BeerDetailPage
