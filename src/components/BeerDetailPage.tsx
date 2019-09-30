@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import BeerImage from './BeerImage'
+import styled from 'styled-components'
 import { getBeerDetail } from 'apis'
 
 type BeerType = {
@@ -52,5 +52,11 @@ const BeerDetailPage: React.FC = () => {
     </>
   )
 }
+
+const BeerImage = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+`
 
 export default BeerDetailPage

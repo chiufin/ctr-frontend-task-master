@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-
 import BeerListPage from './BeerListPage'
 import BeerDetailPage from './BeerDetailPage'
 
