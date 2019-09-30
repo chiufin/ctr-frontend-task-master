@@ -25,10 +25,10 @@ const BeerListPage: React.FC = () => {
         return (
           <Link to={`/${id}`} key={`beer-${id}`}>
             <BeerItem>
-              <p>{name}</p>
-              <p>{abv}</p>
-              <p>Tagline: {tagline}</p>
               <BeerImage src={image_url} />
+              <BeerLabel>{name}</BeerLabel>
+              <BeerLabel>{abv}</BeerLabel>
+              <BeerLabel>{tagline}</BeerLabel>
             </BeerItem>
           </Link>
         )
@@ -41,25 +41,41 @@ const BeerListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
-  background: #333;
+  background: #222;
 `
 
 const BeerItem = styled.div`
-  width: 200px;
-  height: 200px;
-  border: 1px solid #999;
+  width: 380px;
+  height: 250px;
+  border: 5px solid #333;
   align-content: flex-start;
-  padding: 10px;
+  padding: 15px;
   margin: 15px;
+  border-radius: 15px;
   &:hover {
-    background: lightyellow;
+    border: 5px solid #ffbc0c;
   }
 `
 
+const BeerLabel = styled.p`
+  color: #fff;
+  text-decoration: underline #222;
+  margin-bottom: 2px;
+  width: 340px;
+  height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+
 const BeerImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 10px;
   object-fit: contain;
+  background: #fff;
 `
 
 export default BeerListPage
