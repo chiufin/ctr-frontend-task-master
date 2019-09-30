@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { getBeerDetail } from 'apis'
-import { Link } from 'react-router-dom'
 
 type BeerType = {
   name?: string
@@ -48,11 +47,13 @@ const BeerDetailPage: React.FC = () => {
         <BeerLabel>{tagline}</BeerLabel>
         <BeerLabel>{abv} (abv)</BeerLabel>
         <hr />
-        <BeerLabel>Description: {description}</BeerLabel>
+        <BeerLabel>{description}</BeerLabel>
         <BeerLabel>Brewed Date: {first_brewed}</BeerLabel>
+        <br />
+        <BeerLabel>Food Pairings</BeerLabel>
         {food_pairing &&
           food_pairing.map((food, i) => (
-            <BeerLabel key={`food-${i}`}>{food}</BeerLabel>
+            <BeerLabel key={`food-${i}`}>&bull; {food}</BeerLabel>
           ))}
         <Button onClick={() => alert('Cheers!')}>Drink</Button>
         <Link to="/">
