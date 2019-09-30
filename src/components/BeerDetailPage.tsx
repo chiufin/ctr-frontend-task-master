@@ -52,6 +52,7 @@ const BeerDetailPage: React.FC = () => {
           food_pairing.map((food, i) => (
             <BeerLabel key={`food-${i}`}>{food}</BeerLabel>
           ))}
+        <Button onClick={() => alert('Cheers!')}>Drink</Button>
       </BeerContainer>
     </BeerLayout>
   )
@@ -88,6 +89,20 @@ const BeerImage = styled.img`
   border-radius: 10px;
   object-fit: contain;
   background: #fff;
+`
+
+const Button = styled.button`
+  width: 150px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 10px;
+  background: #ffbc0c;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  &:hover {
+    background: #ffca0b;
+  }
 `
 
 export default BeerDetailPage

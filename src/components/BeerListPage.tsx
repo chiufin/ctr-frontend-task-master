@@ -19,23 +19,37 @@ const BeerListPage: React.FC = () => {
     getBeerList().then((json) => setBeers(json))
   }, [])
   return (
-    <BeerListContainer>
-      {beers.map((beer) => {
-        const { id, name, abv, tagline, image_url } = beer
-        return (
-          <Link to={`/${id}`} key={`beer-${id}`}>
-            <BeerItem>
-              <BeerImage src={image_url} />
-              <BeerLabel>{name}</BeerLabel>
-              <BeerLabel>{abv}</BeerLabel>
-              <BeerLabel>{tagline}</BeerLabel>
-            </BeerItem>
-          </Link>
-        )
-      })}
-    </BeerListContainer>
+    <>
+      <Title>Beerbylon BAR</Title>
+      <BeerListContainer>
+        {beers.map((beer) => {
+          const { id, name, abv, tagline, image_url } = beer
+          return (
+            <Link to={`/${id}`} key={`beer-${id}`}>
+              <BeerItem>
+                <BeerImage src={image_url} />
+                <BeerLabel>{name}</BeerLabel>
+                <BeerLabel>{abv}</BeerLabel>
+                <BeerLabel>{tagline}</BeerLabel>
+              </BeerItem>
+            </Link>
+          )
+        })}
+      </BeerListContainer>
+    </>
   )
 }
+
+const Title = styled.div`
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  color: #666;
+  font-size: 18px;
+  padding-left: 22px;
+  background: #222;
+  letter-spacing: 3px;　
+`
 
 const BeerListContainer = styled.div`
   display: flex;
@@ -48,10 +62,10 @@ const BeerItem = styled.div`
   width: 380px;
   height: 250px;
   border: 5px solid #333;
+  border-radius: 15px;
   align-content: flex-start;
   padding: 15px;
   margin: 15px;
-  border-radius: 15px;
   &:hover {
     border: 5px solid #ffbc0c;
   }
@@ -60,9 +74,8 @@ const BeerItem = styled.div`
 const BeerLabel = styled.p`
   color: #fff;
   text-decoration: underline #222;
-  margin-bottom: 2px;
   width: 340px;
-  height: 20px;
+  line-height: 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
