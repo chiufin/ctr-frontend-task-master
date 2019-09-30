@@ -28,9 +28,9 @@ const BeerListPage: React.FC = () => {
             <Link to={`/${id}`} key={`beer-${id}`}>
               <BeerItem>
                 <BeerImage src={image_url} />
-                <BeerLabel>{name}</BeerLabel>
-                <BeerLabel>{abv}</BeerLabel>
+                <BeerTitle>{name}</BeerTitle>
                 <BeerLabel>{tagline}</BeerLabel>
+                <BeerLabel>{abv} (abv)</BeerLabel>
               </BeerItem>
             </Link>
           )
@@ -70,12 +70,19 @@ const BeerItem = styled.div`
     border: 5px solid #ffbc0c;
   }
 `
+const BeerTitle = styled.h1`
+  color: #fff;
+  font-size: 18px;
+  text-decoration: underline #222;
+  margin-bottom: 5px;
+`
 
 const BeerLabel = styled.p`
-  color: #fff;
+  color: #ddd;
   text-decoration: underline #222;
   width: 340px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

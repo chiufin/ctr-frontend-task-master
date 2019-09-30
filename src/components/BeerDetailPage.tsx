@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { getBeerDetail } from 'apis'
+import { Link } from 'react-router-dom'
 
 type BeerType = {
   name?: string
@@ -43,16 +44,20 @@ const BeerDetailPage: React.FC = () => {
     <BeerLayout>
       <BeerContainer>
         <BeerImage src={image_url} />
-        <BeerLabel>{name}</BeerLabel>
+        <BeerTitle>{name}</BeerTitle>
         <BeerLabel>{tagline}</BeerLabel>
-        <BeerLabel>{description}</BeerLabel>
-        <BeerLabel>{abv}</BeerLabel>
-        <BeerLabel>{first_brewed}</BeerLabel>
+        <BeerLabel>{abv} (abv)</BeerLabel>
+        <hr />
+        <BeerLabel>Description: {description}</BeerLabel>
+        <BeerLabel>Brewed Date: {first_brewed}</BeerLabel>
         {food_pairing &&
           food_pairing.map((food, i) => (
             <BeerLabel key={`food-${i}`}>{food}</BeerLabel>
           ))}
         <Button onClick={() => alert('Cheers!')}>Drink</Button>
+        <Link to="/">
+          <LinkButton>Back</LinkButton>
+        </Link>
       </BeerContainer>
     </BeerLayout>
   )
@@ -75,10 +80,16 @@ const BeerContainer = styled.div`
   border-radius: 15px;
   padding: 15px;
 `
+const BeerTitle = styled.h1`
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 10px;
+`
 
 const BeerLabel = styled.p`
-  color: #fff;
+  color: #ddd;
   line-height: 150%;
+  font-size: 12px;
 `
 
 const BeerImage = styled.img`
@@ -99,9 +110,17 @@ const Button = styled.button`
   background: #ffbc0c;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
+  margin: 10px 10px 0 0;
   &:hover {
     background: #ffca0b;
+  }
+`
+
+const LinkButton = styled(Button)`
+  background: #555;
+  color: #ddd;
+  &:hover {
+    background: #777;
   }
 `
 
