@@ -45,15 +45,17 @@ const Title = styled.div`
   height: 50px;
   line-height: 50px;
   color: #666;
-  font-size: 18px;
+  font-size: 22px;
   padding-left: 22px;
   background: #222;
-  letter-spacing: 3px;　
+  letter-spacing: 3px;
+  　text-align: center;
 `
 
 const BeerListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   min-height: 100vh;
   background: #222;
 `
